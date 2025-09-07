@@ -1,17 +1,15 @@
-import React, { createContext, StrictMode } from "react";
+import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
-import colorData from "./color-data.json";
-
-export const ColorContext = createContext(colorData);
+import ColorProvider from "./color-hooks.jsx";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <ColorContext.Provider value={{ colorData }}>
+    <ColorProvider>
       <App />
-    </ColorContext.Provider>
+    </ColorProvider>
   </StrictMode>
 );
