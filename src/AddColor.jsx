@@ -3,8 +3,8 @@ import { useInput } from "./useInput";
 import { useColors } from "./color-hooks";
 
 const AddColor = ({ onNewColor = (f) => f }) => {
-  const [title, resetTitle] = useInput("");
-  const [color, resetColor] = useInput("#000000");
+  const [titleProps, resetTitle] = useInput("");
+  const [colorProps, resetColor] = useInput("#000000");
   const { addColor } = useColors();
 
   const submit = (e) => {
@@ -16,19 +16,21 @@ const AddColor = ({ onNewColor = (f) => f }) => {
 
   return (
     <form onSubmit={submit}>
-      <label htmlFor="title">Title:</label>
-      <input
-        {...titleProps}
-        type="text"
-        placeholder="color title..."
-        required
-        id="title"
-      />
-
-      <label htmlFor="color">Color:</label>
-      <input {...colorProps} type="color" id="color" required />
-
-      <button type="button">ADD</button>
+      <div>
+        <label htmlFor="title">Title:</label>
+        <input
+          {...titleProps}
+          type="text"
+          placeholder="color title..."
+          required
+          id="title"
+        />
+      </div>
+      <div>
+        <label htmlFor="color">Color:</label>
+        <input {...colorProps} type="color" id="color" required />
+      </div>
+      <button type="submit">ADD</button>
     </form>
   );
 };
